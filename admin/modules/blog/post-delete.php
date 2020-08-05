@@ -1,0 +1,1 @@
+<h1>post-delete.php-blog</h1>

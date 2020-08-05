@@ -1,0 +1,35 @@
+html {
+  height: 100%;
+}
+
+.sticky-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section-header {
+  background: #EAEFF2;
+}
+
+.section-header--white {
+  background: #FFF;
+}
+
+.authorization-page__header-title{
+  opacity: inherit;
+}
+
+.authorization-page__header-subtitle{
+  opacity: inherit;
+}
+
+.authorization-page__header a{
+  transition: opacity 0.1s ease-in ;
+  
+}
+
+.authorization-page__header a:hover {
+  text-decoration: none;
+  opacity: 0.7;
+}
