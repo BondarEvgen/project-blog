@@ -1,9 +1,10 @@
 <?php
 
+$pagination = pagination( 3, 'posts');
 
-$posts = R::find( 'posts', 'ORDER BY id DESC');
+$posts = R::find('posts', 'ORDER BY id ASC ' . $pagination['sql_pages_limit']);
 
-
+  
 
 ob_start();
 

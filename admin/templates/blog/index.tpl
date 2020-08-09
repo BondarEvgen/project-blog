@@ -34,19 +34,27 @@
 				<div class="admin-form__item pt-40">
 					<div class="section-pagination">
 						<div class="section-pagination__item">
-							<a class="pagination-button" href="#">назад</a>
+							<a class="pagination-button" href="<?= HOST?>admin/blog?page=<?php echo ( $pagination['page_number'] - 1 )?>">назад</a>
 						</div>
+
+						<?php for( $i=1; $i <= $pagination[ 'number_of_pages' ]; $i++):?>
+
+							<div class="section-pagination__item">
+							<?php if( $i == $pagination[ 'page_number' ] ):?>
+
+								<a class="pagination-button active" href="<?= HOST?>admin/blog?page=<?= $i?>"><?= $i?></a>
+
+							<?php else:?>
+
+								<a class="pagination-button " href="<?= HOST?>admin/blog?page=<?= $i?>"><?= $i?></a>
+
+							<?php endif;?>
+							</div>
+
+						<?php endfor;?>
+						
 						<div class="section-pagination__item">
-							<a class="pagination-button active" href="#">1</a>
-						</div>
-						<div class="section-pagination__item">
-							<a class="pagination-button" href="#">2</a>
-						</div>
-						<div class="section-pagination__item">
-							<a class="pagination-button" href="#">3</a>
-						</div>
-						<div class="section-pagination__item">
-							<a class="pagination-button" href="#">вперед</a>
+							<a class="pagination-button" href="<?= HOST?>admin/blog?page=<?php echo ( $pagination['page_number'] + 1 )?>">вперед</a>
 						</div>
 					</div>
 				</div>
