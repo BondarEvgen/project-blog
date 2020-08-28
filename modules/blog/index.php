@@ -18,9 +18,9 @@ else {
 
   $pageTitle = "All posts";
 
-  $pagination = pagination( 3, 'posts');
+  $pagination = pagination( 1, 'posts');
 
-  $posts = R::find('posts', 'ORDER BY id ASC ' . $pagination['sql_pages_limit']);
+  $posts = R::find('posts', 'ORDER BY id DESC ' . $pagination['sql_pages_limit']);
 
   ob_start();
 

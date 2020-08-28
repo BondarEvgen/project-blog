@@ -23,27 +23,9 @@
 			</div>
 			<div class="page-blog__pagination">
 				<div class="section-pagination">
-					<div class="section-pagination__item">
-						<a class="pagination-button" href="<?= HOST?>blog?page=<?php echo ($pagination['page_number'] - 1);?>">назад</a>
-					</div>
 
-						<?php for( $i = 1; $i <= $pagination[ 'number_of_pages' ]; $i++):?>
-
-						<div class="section-pagination__item">
-
-							<?php if( $i == $pagination[ 'page_number' ]):?>
-									<a class="pagination-button active" href="<?= HOST?>blog?page=<?= $i?>"><?= $i?></a>
-							<?php else:?>
-									<a class="pagination-button " href="<?= HOST?>blog?page=<?= $i?>"><?= $i?></a>
-							<?php endif;?>
-	
-						</div>
-
-						<?php endfor;?>
+				<?php include ROOT . 'templates/blog/pagination/_pagination.tpl'?>
 				
-					<div class="section-pagination__item">
-						<a class="pagination-button" href="<?= HOST?>blog?page=<?php echo ($pagination['page_number'] + 1);?>">вперед</a>
-					</div>
 				</div>
 			</div>
 		</div>
