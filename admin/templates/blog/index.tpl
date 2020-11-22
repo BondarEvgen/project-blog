@@ -1,4 +1,4 @@
-	<div class="admin-page__content">
+	
 		<div class="admin-page__content-form">
 			<div class="admin-form" style="width: 900px;">
 <?php include ROOT . 'admin/templates/components/success.tpl'?>
@@ -23,7 +23,7 @@
 							<td><?=$post[ 'id' ]?></td>
 							<td><a href="<?php echo HOST . 'admin';?>/post-edit?id=<?=$post[ 'id' ]?>"><?php echo $post[ 'title' ];?></a></td>
 							<td>
-								<button class="icon-delete"></button>
+								<a  href="<?php echo HOST . 'admin';?>/post-delete?id=<?=$post[ 'id' ]?>" class="icon-delete"></a>
 							</td>
 						</tr>
 
@@ -31,6 +31,8 @@
 					
 					</tbody>
 				</table>
+
+				 
 				<div class="admin-form__item pt-40">
 					<div class="section-pagination">
 						<div class="section-pagination__item">
@@ -60,4 +62,4 @@
 				</div>
 			</div>
 		</div>
-	</div><!-- build:js1 js/jquery.js -->
+<!-- build:js1 js/jquery.js -->

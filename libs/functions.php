@@ -100,3 +100,61 @@ function pagination( $results_per_page, $type)
     return $result;
 }
 
+// function saveUploadImg( string, [], integer, integer, string, [],[])
+
+function saveUploadedImg ( $inputFileName, $minSize, $maxFileSize, $folderName, $fullSize, $smallSize){
+          
+    $fileName = $_FILES[ $inputFileName ][ 'name' ];
+    $fileTmpLoc = $_FILES[ $inputFileName ][ 'tmp_name'];
+    $fileSize = $_FILES[ $inputFileName ][ 'size' ];
+    $fileErrorMsg = $_FILES[ $inputFileName ][ 'error' ];
+    $kaboom = explode('.', $fileName );
+    $fileExt = end( $kaboom );
+    
+    list( $width, $height) = getimagesize( $fileTmpLoc );
+
+    if( $width < $minSize[ 0 ] || $height < $minSize[ 1 ] ) {
+      $_SESSION[ 'errors' ][] = [ 'title' => 'This image is too small', 'disc' => 'upload an image with a width of 600 pixels or more'];
+    }
+
+    if( $fileSize > ( $maxFileSize * 1024 * 1024 ) ) {
+      $_SESSION[ 'errors' ][] = [ 'title' => 'File must not exceed 12 mb' ];
+    }
+
+    if ( !preg_match( "/\.(gif|jpg|png|jpeg)$/i", $fileName ) ) {
+      $errors[] = 'Your image file was not jpg, jpeg, gif or png type';
+    } else if ($fileErrorMsg == 1) {
+      $errors[] = 'An unknown error occurred';
+    }
+
+    if( empty( $_SESSION[ 'errors' ] ) ) {
+
+      
+      $imgFolderLocation = ROOT . 'usercontent/'. $folderName .'/';
+      $imgFolderLocationSmall = ROOT . 'usercontent/'. $folderName .'/'. $folderName .'-small/';
+
+     
+      $db_file_name = rand(10000000, 99999999) . "." . $fileExt;
+      $filePathFullSize = $imgFolderLocation . $db_file_name;
+      $filePathSmallSize = $imgFolderLocationSmall . $smallSize[ 0 ] . '-' . $db_file_name;
+      
+      
+      // 1.обрезать фото до 1110 х 460
+      // 1.обрезать фото до 290 х 230
+
+      $moveResult = resize_and_crop( $fileTmpLoc, $filePathFullSize, $fullSize[ 0 ], $fullSize[ 1 ] );
+      $moveResult = resize_and_crop( $fileTmpLoc, $filePathSmallSize, $smallSize[ 0 ], $smallSize[ 1 ] );
+
+      if ( $moveResult != true ) {
+        $_SESSION[ 'errors' ][] = [ 'title' =>'File upload failed' ];
+        return false;
+      }
+
+      return [ $db_file_name, $smallSize[ 0 ] . '-' . $db_file_name ];
+      // return 'lalal';
+
+    }
+   
+  
+}
+

@@ -10,6 +10,7 @@
 	<!-- endbuild -->
 	<!-- build:css2 css/styles.css -->
 	<link rel="stylesheet" href="<?= HOST?>static/css/main.css" /><!-- endbuild -->
+	<link rel="stylesheet" href="<?= HOST?>static/css/custom.css" />
 	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700|Playfair+Display:400,700&amp;display=swap&amp;subset=cyrillic-ext" rel="stylesheet" />
 </head>
 

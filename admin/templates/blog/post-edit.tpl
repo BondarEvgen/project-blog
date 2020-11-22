@@ -1,22 +1,29 @@
-	
 <script src="<?= HOST?>libs/ckeditor/ckeditor.js"></script>
 	
 	
 		<div class="admin-page__content-form">
-			<form class="admin-form" method="POST" action="<?= HOST?>admin/post-new" enctype="multipart/form-data">
+			<form class="admin-form" method="POST" action="<?= HOST?>admin/post-edit?id=<?=$post[ 'id' ]?>" enctype="multipart/form-data">
 <?php include ROOT . 'admin/templates/components/success.tpl'?>
 
 <?php include ROOT . 'admin/templates/components/errors.tpl'?>
 				<div class="admin-form__item">
-					<h2 class="heading">Добавить пост </h2>
+					<h2 class="heading">Редактировать пост </h2>
 				</div>
+
 				<div class="admin-form__item">
 					<label class="input__label">Введите название записи 
-						<input name="title" class="input input--width-label" type="text" placeholder="Заголовок поста" />
+						<input
+						 name="title" 
+						 class="input input--width-label" 
+						 type="text" 
+						 placeholder="Заголовок поста"
+						 value="<?php echo $post['title']?>"
+						  />
 					</label>
 				</div>
 				<div class="admin-form__item">
-					<label class="select-label">Выберите категорию <select class="select">
+					<label class="select-label">Выберите категорию 
+						<select class="select">
 							<option value="notes1">Заметки путешественника</option>
 							<option value="notes2">Заметки программиста</option>
 							<option value="notes3">Заметки спортсмена</option>
@@ -31,6 +38,7 @@
 							placeholder="Введите текст"
 							id="editor"
 						>
+						<?php echo $post['content']?>
 						</textarea>
 					
 				</div>
@@ -44,21 +52,30 @@
 								<div class="block-upload__file-name">some-picture.jpg</div>
 							</div>
 						</div>
-					</div>
 
-						<?php  if( !empty( $user->avatar ) ):?>
+						<?php  if( !empty( $post->cover_small ) ):?>
 
-									{* <label class="checkbox__item mt-20">
-										<input class="checkbox__btn" type="checkbox" name="deleteAvatar" />
-										<span class="checkbox__label">Delete</span>
-									</label> *}
-									
+							<div class="block-upload__img mb-10">
+								<img src="<?= HOST?>usercontent/blog/blog-small/<?=$post[ 'cover_small' ]?>" alt="Загрузка картинки" />
+								
+								<!--<div class="block-downloads__delete">
+									<button class="delete-button" type="reset">Delete</button>
+								</div> -->
+							</div>
+
+							<label class="checkbox__item">
+								<input type="checkbox" class="checkbox__btn" name="delete-cover">
+								<span class="checkbox__label">Delete</span>
+							</label>
+
 						<?php endif;?>
+							
+					</div>
 
 				</div>
 				<div class="admin-form__item buttons">
-					<button name="submit"  class="primary-button" type="submit">Опубликовать</button>
-						<a class="secondary-button" href="#">Отмена</a>
+					<button name="postEditSubmit"  class="primary-button" type="submit">Опубликовать</button>
+						<a class="secondary-button" href="<?=HOST?>admin/blog">Отмена</a>
 				</div>
 				<div class="admin-form__item"></div>
 				<div class="admin-form__item"></div>

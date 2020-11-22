@@ -48,9 +48,25 @@ switch ( $uriModule ) {
   case 'post-delete': 
     require( ROOT . "admin/modules/blog/post-delete.php");
     break;
+  
+// ::::::::::::::::::: CATEGORY ::::::::::::::::://
+  case 'category': 
+    require( ROOT . "admin/modules/category/category.php");
+    break;
+
+  case 'category-new': 
+    require( ROOT . "admin/modules/category/category-new.php");
+    break;
+
+  case 'category-edit': 
+    require( ROOT . "admin/modules/category/category-edit.php");
+    break;
+
+  case 'category-delete': 
+    require( ROOT . "admin/modules/category/category-delete.php");
+    break;
 
   default:
     require( ROOT . "admin/modules/admin/index.php");
     break;
-  
 }

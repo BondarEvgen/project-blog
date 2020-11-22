@@ -33,3 +33,15 @@ html {
   text-decoration: none;
   opacity: 0.7;
 }
+
+.primary-button--red  {
+  background-color: #c93535;
+}
+
+.admin-form {
+  width: 900px;
+}
+
+.icon-delete {
+  display: inline-block;
+}
